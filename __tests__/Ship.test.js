@@ -12,4 +12,8 @@ describe("Ship", () => {
   it("has a strating port", () => {
     expect(ship.startingPort).toBe("Dover");
   });
+  it("can set sail" , () => {
+    ship.setSail(); 
+    expect(ship.startingPort).toBeFalsy();
+  });
 });
