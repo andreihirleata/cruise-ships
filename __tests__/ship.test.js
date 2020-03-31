@@ -1,7 +1,8 @@
 /* eslint-disable */
-const Ship = require("../src/ship.js");
-
+const Ship = require("../src/ship");
+const Port = require("../src/port");
 const ship = new Ship("Dover");
+const port = new Port("Calais");
 
 
 describe("Ship", () => {
@@ -13,6 +14,10 @@ describe("Ship", () => {
   });
   it("can set sail" , () => {
     ship.setSail(); 
-    expect(ship.startingPort).toBeFalsy();
+    expect(ship.currentPort).toBeFalsy();
+  });
+  it("can dock at a port", () => {
+    ship.dock(port);
+    expect(ship.currentPort).toEqual("Calais");
   });
 });
