@@ -19,5 +19,7 @@ describe("Ship", () => {
   it("can dock at a port", () => {
     ship.dock(port);
     expect(ship.currentPort).toEqual("Calais");
+    ship.dock(new Port("port2"));
+    expect(ship.currentPort).toEqual('port2');
   });
 });
