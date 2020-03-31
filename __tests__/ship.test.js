@@ -1,9 +1,8 @@
 /* eslint-disable */
-const Ship = require("../src/Ship.js");
+const Ship = require("../src/ship.js");
 
-beforeEach(() => {
-  ship = new Ship("Dover");
-});
+const ship = new Ship("Dover");
+
 
 describe("Ship", () => {
   it("can be instantiated", () => {
