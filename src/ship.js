@@ -7,8 +7,11 @@ class Ship {
 
   setSail() {
     this.previousPort = this.currentPort;
+    if (this.previousPort === this.itinerary.ports[this.itinerary.ports.length - 1]) {
+      return `The ship is docked in ${this.currentPort.name} which is the final destination`;
+    }
     this.currentPort = null;
-    // return `The ship is docked in ${this.currentPort.name} which is the final destination`;
+    
   }
   dock() {
     if (this.currentPort){ return "this ship is already docked" }

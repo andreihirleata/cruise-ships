@@ -31,4 +31,10 @@ describe("Ship", () => {
     expect(ship.currentPort.name).toEqual(calais.name);
     expect(ship.dock()).toBe("this ship is already docked");
   });
+  it("returns a message if ship is at the final destination" , () => {
+    ship.setSail();
+    ship.dock();
+    expect(ship.setSail()).toEqual(`The ship is docked in Calais which is the final destination`);
+  }); 
+  
 });
