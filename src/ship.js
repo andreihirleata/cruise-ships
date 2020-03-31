@@ -1,7 +1,6 @@
 class Ship {
-  constructor(startingPort, currentPort) {
-    this.startingPort = startingPort;
-    this.currentPort = startingPort;
+  constructor(currentPort) {
+    this.currentPort = currentPort.name;
   }
 
   setSail() {
