@@ -1,7 +1,5 @@
-
-
 class Port {
-  constructor(name , ships = []) {
+  constructor(name, ships = []) {
     this.name = name;
     this.ships = ships;
   }
@@ -13,9 +11,7 @@ class Port {
     if (shipIndex > -1) {
       this.ships.splice(shipIndex, 1);
     }
-
   }
-
 }
 
 module.exports = Port;

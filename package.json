@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --bail"
+    "test": "jest --verbose --bail --coverage"
   },
   "author": "",
   "license": "ISC",
