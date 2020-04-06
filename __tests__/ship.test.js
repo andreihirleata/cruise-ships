@@ -41,5 +41,10 @@ describe("Ship", () => {
         `The ship is docked in Calais which is the final destination`
       );
     });
+    it("removes ships that setSail", () => {
+      expect(dover.ships).toContain(ship);
+      ship.setSail();
+      expect(dover.ships).not.toContain(ship);
+    });
   });
 });
