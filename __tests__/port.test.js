@@ -1,19 +1,14 @@
 
 const Port = require("../src/port");
-/*
-  TODO : Fix last test
-  need to create a ship stub after second describe
-  AND
-  add the ship stub to each port in the beforeEach
-*/
+
 
 describe("Port", () => {
   describe("with ships / add / removee", () => {
     let calais;
     let dover;
 
-    const bigShip = jest.fn();
-    const ship = jest.fn();
+    const bigShip = {name: "ship" , removeShip: jest.fn(), addShip: jest.fn()}
+    const ship = {name: "bigShip" , removeShip: jest.fn() , addShip: jest.fn()}
 
     beforeEach(() => {
       calais = new Port("Calais");
@@ -23,6 +18,12 @@ describe("Port", () => {
     it("can be instantiated", () => {
       expect(new Port()).toBeInstanceOf(Object);
     });
+    it("contains ships", () => {
+      dover = new Port("Dover" ,ship);
+      expect(dover.ships).toEqual(ship);
+      calais = new Port("Calais" , bigShip)
+      expect(calais.ships).toEqual(bigShip);
+    });
     it("can have ships added and removed to it", () => {
       dover.addShip(bigShip);
       dover.addShip(ship);
@@ -31,11 +32,6 @@ describe("Port", () => {
       dover.removeShip(ship);
       expect(dover.ships).not.toContainEqual(ship);
     });
-    it("contains ships", () => {
-      expect(dover.ships).toContain(ship);
-      ship.setSail();
-      ship.dock();
-      expect(calais.ships).toContain(ship);
-    });
+
   });
 });

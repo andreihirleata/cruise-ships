@@ -1,7 +1,6 @@
 /* eslint-disable */
 const Ship = require("../src/ship");
-const Port = require("../src/port");
-const Itinerary = require("../src/itinerary");
+
 
 describe("Ship", () => {
   describe("with ports and an itinerary", () => {
@@ -11,14 +10,17 @@ describe("Ship", () => {
     let ship;
 
     beforeEach(() => {
-      calais = new Port("Calais");
-      dover = new Port("Dover");
-      itinerary = new Itinerary([dover, calais]);
+      calais = {name: "Calais" , removeShip: jest.fn() ,addShip: jest.fn()};
+      dover = {name: "Dover" , removeShip: jest.fn(), addShip: jest.fn()};
+      itinerary = {ports: [dover , calais]}
       ship = new Ship(itinerary);
       ship.currentPort = dover;
     });
     it("can be instantiated", () => {
       expect(new Ship(itinerary)).toBeInstanceOf(Object);
+    });
+    it("gets added to the port on instatiation" , () => {
+      expect(ship.currentPort.addShip).toHaveBeenCalledWith(ship);
     });
     it("has a strating port", () => {
       expect(ship.currentPort.name).toEqual("Dover");
@@ -29,10 +31,8 @@ describe("Ship", () => {
       expect(ship.currentPort).toBeFalsy();
     });
     it("can dock at a port", () => {
-      ship.setSail();
       ship.dock();
-      expect(ship.currentPort.name).toEqual(calais.name);
-      expect(ship.dock()).toBe("this ship is already docked");
+      expect(ship.currentPort.addShip).toHaveBeenCalledWith(ship);
     });
     it("throws an error if reached final destination", () => {
       ship.setSail();
@@ -42,9 +42,8 @@ describe("Ship", () => {
       );
     });
     it("removes ships that setSail", () => {
-      expect(dover.ships).toContain(ship);
       ship.setSail();
-      expect(dover.ships).not.toContain(ship);
+      expect(dover.removeShip).toHaveBeenCalledWith(ship);
     });
   });
 });
