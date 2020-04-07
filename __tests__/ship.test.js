@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 const Ship = require("../src/ship");
 
 
@@ -24,6 +24,10 @@ describe("Ship", () => {
     });
     it("has a strating port", () => {
       expect(ship.currentPort.name).toEqual("Dover");
+    });
+    it("has a previousPort property set to null on start" , () => {
+      expect(ship).toHaveProperty("previousPort");
+      expect(ship.previousPort).toEqual(null);
     });
     it("can set sail", () => {
       ship.setSail();

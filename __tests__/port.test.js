@@ -7,8 +7,8 @@ describe("Port", () => {
     let calais;
     let dover;
 
-    const bigShip = {name: "ship" , removeShip: jest.fn(), addShip: jest.fn()}
-    const ship = {name: "bigShip" , removeShip: jest.fn() , addShip: jest.fn()}
+    const bigShip = {name: "ship"};
+    const ship = {name: "bigShip"};
 
     beforeEach(() => {
       calais = new Port("Calais");
@@ -17,6 +17,9 @@ describe("Port", () => {
 
     it("can be instantiated", () => {
       expect(new Port()).toBeInstanceOf(Object);
+    });
+    it("has a name" , () => {
+      expect(dover).toHaveProperty("name");
     });
     it("contains ships", () => {
       dover = new Port("Dover" ,ship);
