@@ -2,6 +2,11 @@ html {
     height: 100%;
 }
 
+@font-face {
+    font-family: "aGoblinAppears";
+    src: url("../fonts/a-goblin-appears-font/AGoblinAppears-o2aV.ttf");
+  }
+
 body { 
     background-color: black;
     display: flex;
@@ -57,4 +62,17 @@ body {
     background-color: #d8040f;
     border-bottom-width: 0;
     padding-top: 14px;
+  }
+
+  #message {
+    border: 0;
+    background-color: white;
+    color: black;
+    font-family: inherit;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-family: 'aGoblinAppears';
   }
