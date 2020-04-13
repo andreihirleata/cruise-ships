@@ -68,9 +68,9 @@
         if (shipLeft === nextPortElement.offsetLeft - 32) {
           this.ship.setSail();
           this.ship.dock();
+          this.renderMessage(`The ship is docked in ${this.ship.itinerary.ports[nextPortIndex].name}`);
           clearInterval(sailInterval);
-        }
-        window.setTimeout( () => this.renderMessage(`The ship is docked in ${this.ship.itinerary.ports[nextPortIndex].name}`), 4000); 
+        } 
         shipElement.style.left = `${shipLeft + 1}px`;
       }, 20);
      
