@@ -15,6 +15,7 @@
           this.submitPort();
           this.renderPorts(this.ship.itinerary.ports);
           this.renderShip();
+          document.querySelector("#portInput").value = '';
         });
     }
     initialiseSea() {
@@ -60,7 +61,7 @@
       this.renderMessage(`The ship is docked in ${this.ship.currentPort.name}`);
 
       const topElement = document.querySelector("#top");
-      topElement.innerHTML = `Current port:${this.ship.itinerary.ports[0].name}`;
+      topElement.innerHTML = `Current port:${this.ship.currentPort.name}`;
     }
 
     setSail() {
