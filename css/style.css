@@ -80,7 +80,6 @@ body {
 
   #head-up {
       position: absolute;
-      border: 10px  solid red;
       display: flex;
       flex-direction: column;
       color: blanchedalmond;
