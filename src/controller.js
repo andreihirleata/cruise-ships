@@ -49,6 +49,9 @@
       shipElement.style.top = `${portElement.offsetTop + 32}px`;
       shipElement.style.left = `${portElement.offsetLeft + 32}px`;
       this.renderMessage(`The ship is docked in ${this.ship.currentPort.name}`);
+
+      const topElement = document.querySelector("#top");
+      topElement.innerHTML = `Current port:${this.ship.itinerary.ports[0].name}`;
     }
 
     setSail() {
@@ -56,6 +59,8 @@
       const currentPortIndex = ship.itinerary.ports.indexOf(this.ship.currentPort);
       const nextPortIndex = currentPortIndex + 1;
       const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
+      const topElement = document.querySelector("#top");
+      const bottomElement = document.querySelector('#bottom');
       
       if (!nextPortElement) {
         this.renderMessage('End of the line');
@@ -63,11 +68,14 @@
       
       const shipElement = document.querySelector("#ship");
       this.renderMessage(`The ship is sailing from ${this.ship.currentPort.name} to ${this.ship.itinerary.ports[nextPortIndex].name}`);
+      topElement.innerHTML = `Current port: None`;
+      bottomElement.innerHTML = `Previous port: ${this.ship.currentPort.name}`;
       const sailInterval = setInterval(() => {
         const shipLeft = parseInt(shipElement.style.left, 10);
         if (shipLeft === nextPortElement.offsetLeft - 32) {
           this.ship.setSail();
           this.ship.dock();
+          topElement.innerHTML = `Current port: ${this.ship.currentPort.name}`;
           this.renderMessage(`The ship is docked in ${this.ship.itinerary.ports[nextPortIndex].name}`);
           clearInterval(sailInterval);
         } 

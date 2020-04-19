@@ -16,7 +16,7 @@ body {
 }
 
 #viewport {
-    width: 640px;
+    width: 100%;
     height: 256px;
     position: relative;
     overflow-x: auto;
@@ -75,4 +75,22 @@ body {
     left: 0;
     width: 100%;
     font-family: 'aGoblinAppears';
+    text-align: center;
   }
+
+  #head-up {
+      position: absolute;
+      border: 10px  solid red;
+      display: flex;
+      flex-direction: column;
+      color: blanchedalmond;
+      font-size: 20px;
+      top: 10px;
+      right: 10px;
+      
+  }
+
+  #head-up p {
+    font-family: 'aGoblinAppears';
+  }
+
